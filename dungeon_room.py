@@ -20,11 +20,11 @@ def _loot_value():
 
 
 def _random_enemy():
-    has_monster = randint(1, 10) > 6
+    has_monster = randint(1, 10) > 5
 
     if has_monster:
         room_hp = randint(10, 20)
-        room_dam = randint(1, 10)
+        room_dam = randint(5, 15)
         return Enemy(room_hp, room_dam)
     return None
 

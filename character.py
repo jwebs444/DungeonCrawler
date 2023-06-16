@@ -42,11 +42,11 @@ class Party(Entity):
 
     def __init__(self, profession: Profession):
         if profession is Profession.MERCENARY:
-            self.__internal_init__(10, 150, 15, 10, False, 0)
+            self.__internal_init__(10, 50, 15, 10, False, 0)
         elif profession is Profession.ARCHEOLOGIST:
-            self.__internal_init__(10, 100, 10, 15, True, 0)
+            self.__internal_init__(10, 35, 10, 15, True, 0)
         else:
-            self.__internal_init__(15, 100, 10, 10, False, 0)
+            self.__internal_init__(15, 35, 10, 10, False, 0)
 
     def __internal_init__(self, mp: int, hp: int, dam: int, supplies: int, expertise: bool, treasure: int, ):
         self.supplies = supplies
@@ -66,6 +66,7 @@ class Party(Entity):
     def rest(self):
         self.move_point = self._max_move_point
         self.supplies -= 1
+        self.reset_hp()
 
     def spend_mp(self):
         self.move_point -= 1

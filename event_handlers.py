@@ -4,6 +4,17 @@ from dungeon_room import randint, Room
 from character import Party, Enemy
 
 
+class PlayerChoiceEnum(Enum):
+    UNKNOWN = 0
+    REST = 1
+    CONTINUE = 2
+    LEAVE = 3
+
+    @classmethod
+    def _missing_(cls, value):
+        return cls.UNKNOWN
+
+
 class DungeonEnum(Enum):
     LOOT = 1
     COMBAT = 2

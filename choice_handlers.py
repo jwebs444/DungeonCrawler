@@ -35,9 +35,12 @@ def rest_continue(player_party: Party):
 def party_selector() -> Profession:
     print(f"To begin searching for a dungeon choose an adventuring party")
     for profession in Profession:
-        party = Party(profession)
-        print(f' {profession.value}. {profession} (MP: {party.move_point} HP : {party.health}, DAM: {party.damage}, '
-              f'Supplies: {party.supplies}, Expertise: {party.expertise})')
+        if profession is Profession.UNKNOWN:
+            continue
+        else:
+            party = Party(profession)
+            print(f' {profession.value}. {profession.name} (MP: {party.move_point} HP : {party.health}, DAM: {party.damage}, '
+                  f'Supplies: {party.supplies}, Expertise: {party.expertise})')
     while True:
         selected_value: int = int(input("Enter the number of your party selection\n"))
         if Profession(selected_value) is not Profession.UNKNOWN:
